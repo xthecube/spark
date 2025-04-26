@@ -1,2 +1,3 @@
-# spark
-Random thing I (might) end up working on as a hobby project. Details will change.
+# Best readme.md ever
+
+Working on this in a codespace. Good luck figuring out what the hell it is :)
