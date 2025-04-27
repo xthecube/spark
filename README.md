@@ -1,3 +1,8 @@
 # Best readme.md ever
 
-Working on this in a codespace. Good luck figuring out what the hell it is :)
+This is an experiment to see how well Github Copilot can write code in context.
+
+Information:
+- PerchanceAPIApp is an Android app that will **theoretically** send API requests to a server that hosts an AI model. 
+
+... That's it lol

@@ -1,0 +1,36 @@
+DIY Perchance API
+Since Perchance doesn't currently have an API, I've made a Node.js script that acts as a Do-It-Yourself API. If you'd like to create a Discord bot, then there's a separate tutorial for that. The tutorial below uses Glitch.com because it's free, but you can copy the code and use it on repl.it or wherever you want.
+
+You don't need coding skills to follow this tutorial - you just need to create a Glitch account and then duplicate the server template that I've created.
+
+You can test out a working version of the API here: https://diy-perchance-api.glitch.me
+
+Note: As of writing there are two Perchance plugins which require ads to fund them: text-to-image-plugin and ai-text-plugin. See those plugin pages for more details on why ads are needed (basically, AI stuff requires GPU servers which are too expensive for me to personally cover). So these plugins won't work if you try to run them from your own server, since there's no way to display the ads that are needed to fund them. In other words, those two plugins can only be used on the Perchance site itself.
+
+Setting Up Your Server:
+Sign up for Glitch.com if you haven't already. It allows you to play around with Node.js servers for free.
+Visit glitch.com/edit/#!/diy-perchance-api.
+Look for a "Remix" button, and click it. The interface may have changed a bit since I wrote this, but it shouldn't be too hard to find. As of writing, you can click the drop-down menu in the top-right, and then click "Remix Project".
+It'll redirect you to a new copy of the project with a randomly generated name like "cool-moose-forest" (look in the URL).
+Assuming your project name is "cool-moose-forest", visit https://cool-moose-forest.glitch.me
+Try visiting cool-moose-forest.glitch.me/api?generator=animal-sentence&list=output
+Change animal-sentence to the name of your generator (the "name" of your generator is the part that comes after perchance.org/ in your generator's URL) and change output to the name of the list that you want to generate an item from.
+That's it!
+Simple Code Example
+If, instead of a full API server, you just want a simple code example for programatically geting results from your generator, below is the important/relevant part of the above API server's code. This example shows that you just need to download your generator's HTML, load it with JSDOM, and then you can use window.root.yourListName to access your lists.
+
+const { JSDOM } = require("jsdom"); // v16.4.0
+const fetch = require("node-fetch");  // v2.6.1
+
+let generatorName = "animal-sentence"; // <-- change this to your generator name
+let html = await fetch(`https://perchance.org/api/downloadGenerator?generatorName=${generatorName}&__cacheBust=${Math.random()}`).then(r => r.text());
+const { window } = new JSDOM(html, {runScripts: "dangerously"});
+
+// now you can use the `window` object of your generator like this:
+console.log(window.root.output.toString());
+console.log(window.root.yourListName.toString());
+window.root.character.hitpoints = 10;
+let charDesc = window.root.character.description.evaluateItem;
+window.update();
+Notes:
+The first request to your generator will take longer than subsequent requests because the browser needs to load the generator into the cache.

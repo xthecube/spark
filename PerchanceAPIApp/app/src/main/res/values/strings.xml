@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Perchance API App</string>
+    <string name="main_activity_title">Main Activity</string>
+    <string name="settings_activity_title">Settings</string>
+    <string name="api_url_label">API URL:</string>
+    <string name="api_url_hint">Enter your API URL</string>
+    <string name="send_request_button">Send Request</string>
+    <string name="response_label">Response:</string>
+    <string name="error_message">An error occurred while sending the request.</string>
+    <string name="success_message">Request sent successfully!</string>
+    <string name="edit_api_syntax">Edit API Syntax</string>
+    <string name="localhost_support">Support for localhost and private network URLs</string>
+    <string name="ollama_api_support">Ollama API support included</string>
+</resources>
